@@ -12,7 +12,7 @@ public class WebCrawler {
     public static void main(String[] args) throws IOException {
 
 
-        Document doc = Jsoup.connect("http://orf.at").userAgent("Mozilla").get();
+        Document doc = Jsoup.connect("https://orf.at/").userAgent("Mozilla").get();
         String title = doc.title();
         Elements headline = doc.select("div.oon");
 
