@@ -10,7 +10,7 @@ import java.util.List;
 
 public class WebCrawler {
 
-    // HTML der Webseite holen und in Document doc  speichern
+    // HTML der Webseite holen und in Document doc speichern
     public static Document getHtml() throws IOException {
         Document doc = Jsoup.connect("https://orf.at/").userAgent("Mozilla").get();
         return doc;
@@ -23,6 +23,10 @@ public class WebCrawler {
         Sandra.headlinesApp();
         Sandra.breakingNews();
         System.out.println(getHtml());
+
+        Mary.TitleandWebsite();
+        /* new Mary().getPageLinks("https://orf.at/"); */ // not sure how can it be used??
+        Mary.COVAusland();
 
     }
 }
