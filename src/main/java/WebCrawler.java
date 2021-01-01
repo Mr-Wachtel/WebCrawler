@@ -18,15 +18,23 @@ public class WebCrawler {
 
     public static void main(String[] args) throws IOException {
 
+
         Sandra.websideName();
         Sandra.headlines();
         Sandra.headlinesApp();
         Sandra.breakingNews();
-        System.out.println(getHtml());
+        Sandra.giveMeBackwards(Sandra.headlines());
 
-        Mary.TitleandWebsite();
+       //System.out.println(getHtml());
+
+
+
+
+
+
+       Mary.TitleandWebsite();
         /* new Mary().getPageLinks("https://orf.at/"); */ // not sure how can it be used??
-        Mary.COVAusland();
+       Mary.COVAusland();
 
     }
 }

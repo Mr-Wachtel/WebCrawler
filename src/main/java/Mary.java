@@ -59,7 +59,7 @@ public class Mary extends WebCrawler {
             }
 
             //Stories
-            Elements divs = document.select("div[class=story] a");
+            Elements divs = getHtml().select("div[class=story] a");
             for (Element div : divs) {
                 System.out.println("Story:" + div.text());
                 System.out.println("Link:" + div.attr("href"));

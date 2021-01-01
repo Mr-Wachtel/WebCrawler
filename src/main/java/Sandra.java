@@ -3,12 +3,17 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import javax.print.Doc;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Sandra extends WebCrawler {
-    //Warum will er main Methode, wenn ich nicht extend schreibe?
+    public Sandra() throws IOException {
+    }
+
+
 
 
 
@@ -25,17 +30,23 @@ public class Sandra extends WebCrawler {
         System.out.println();
     }
 
-        // Headlines (der Appansicht)  als String - Liste
-        // Headlines für die App Version sind im "oon-grid-texts-container-mobile" Absatz
+    // Headlines (der Appansicht)  als String - Liste
+    // Headlines für die App Version sind im "oon-grid-texts-container-mobile" Absatz
     public static void headlinesApp() throws IOException {
 
         List<String> headlinesApp = new ArrayList<>();
+
         Elements appBig = getHtml().select("div.oon-grid-texts-container-mobile");
         for (Element e : appBig) {
             Elements h1 = e.select("h1");
             String stringH1 = h1.toString()
                     .replace("<h1> ", "")
-                    .replace(" </h1>", "");
+                    .replace(" </h1>", "")
+                    .replaceAll(" <br> ", " ")
+                    .replaceAll(" <br>", " ")
+                    .replaceAll("<br> ", " ")
+                    .replaceAll("<br>", " ");
+
             headlinesApp.add(stringH1);
 
         }
@@ -43,15 +54,16 @@ public class Sandra extends WebCrawler {
         for (String e : headlinesApp) {
             System.out.println(e);
             System.out.println();
+
         }
     }
 
-        // Headlines (der Normalansicht)  als String - Liste
-        // Headlines für die Normalansicht sind im "oon-grid-texts-container" Absatz
+    // Headlines (der Normalansicht)  als String - Liste
+    // Headlines für die Normalansicht sind im "oon-grid-texts-container" Absatz
 
-    public static void headlines() throws IOException {
+    public static ArrayList<String> headlines() throws IOException {
 
-        List<String> headlines = new ArrayList<>();
+        ArrayList<String> headlines = new ArrayList<>();
         Elements big = getHtml().select("div.oon-grid-texts-container");
         for (Element e : big) {
             String test = e.toString();
@@ -60,7 +72,11 @@ public class Sandra extends WebCrawler {
                 String stringH1 = h1.toString()
                         .replace("<h1> ", "")
                         .replace(" </h1>", "")
-                        .replace("<br> ", "");
+                        // manchmal wird br mit leezeichen davor abgegeben. manchmal ohne daher wird untschieden
+                        .replaceAll(" <br> ", " ")
+                        .replaceAll(" <br>", " ")
+                        .replaceAll("<br>x", " ")
+                        .replaceAll("<br>", " ");
 
                 headlines.add(stringH1);
             }
@@ -70,42 +86,82 @@ public class Sandra extends WebCrawler {
             System.out.println(e);
             System.out.println();
         }
+        return headlines;
     }
 
 
-// Breaking new, Latest News.... noch nicht fertig
+// Breaking news, Latest News
 
     public static void breakingNews() throws IOException {
 
         if (getHtml().toString().contains("ticker-breaking-special")) {
             Elements breakingNews = getHtml().select("div#ticker-breaking-special");
+
             // System.out.println(breakingNews);
 
             if (breakingNews.toString().contains("h2")) {
-                List<String> breakingNewsKind = new ArrayList<>();
-                List<String> breakingNewsHeadlines = new ArrayList<>();
+
 
                 for (Element e : breakingNews) {
+                    // Art der Breaking News
                     Elements h2BreakingNews = breakingNews.select("h2");
-                    Elements h3BreakingNews = breakingNews.select("h3");
                     String h2BreakingNewsStr = h2BreakingNews.toString();
+                    int substrH2 = h2BreakingNewsStr.indexOf("<span>");
+                    int substrH2End = h2BreakingNewsStr.indexOf("</span>");
+                    h2BreakingNewsStr = h2BreakingNewsStr.substring(substrH2, substrH2End)
+                            .replaceAll("<span>", "");
+
+                    // headline der breaking News
+                    Elements h3BreakingNews = breakingNews.select("h3");
                     String h3BreakingNewsStr = h3BreakingNews.toString();
+                    int substrH3 = h3BreakingNewsStr.indexOf("=\"false\">");
+                    int substrH3End = h3BreakingNewsStr.indexOf("</a");
+                    h2BreakingNewsStr = h2BreakingNewsStr.substring(substrH3, substrH3End)
+                            .replaceAll("=\"false\">", "");
 
-                    breakingNewsKind.add(h2BreakingNewsStr);
-                    breakingNewsHeadlines.add(h3BreakingNewsStr);
-
+                    System.out.println(h2BreakingNewsStr);
+                    System.out.println(h3BreakingNewsStr);
                 }
-
-                System.out.println(breakingNewsKind);
-                System.out.println(breakingNewsHeadlines);
 
             } else {
                 System.out.println("No breaking news");
+                System.out.println();
+
             }
 
         }
     }
+
+    //for Shit an Giggles
+
+    public static void giveMeBackwards(ArrayList<String> headlines) {
+        String[] backwardsArry;
+        String backwardsString;
+        ArrayList<String> backwardsStringArrayList = new ArrayList<>();
+        for (String e : headlines) {
+            backwardsArry = e.split(" ");
+            StringBuilder backwardsStringBuilder = new StringBuilder();
+            for (int i = (backwardsArry.length - 1); i >= 0; i--) {
+                backwardsStringBuilder.append(backwardsArry[i] + " ");
+            }
+            backwardsString = backwardsStringBuilder.toString()
+                                                     .replace(":","")
+                                                     .replace("“","")
+                                                     .replace("„","");
+            backwardsStringArrayList.add(backwardsString);
+
+        }
+        System.out.println("headlines backwards");
+        System.out.println();
+
+        for (String e : backwardsStringArrayList) {
+            System.out.println(e);
+            System.out.println();
+
+        }
+    }
 }
+
 
 
 
