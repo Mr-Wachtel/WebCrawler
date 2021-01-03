@@ -57,11 +57,85 @@ public class WebCrawler {
 
 
 
+     //   System.out.println(getHtml());
 
         Mary.TitleandWebsite();
         Mary.getIcon();
         Mary.getAllLinks();
         Mary.COVAusland();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Start - PHIL
+
 
     }
 }
