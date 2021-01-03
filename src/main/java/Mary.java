@@ -4,7 +4,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 public class Mary extends WebCrawler {
 
@@ -31,67 +33,140 @@ public class Mary extends WebCrawler {
         links = new HashSet<>();
     }
 
-    public static void TitleandWebsite() {
+    public static void TitleandWebsite() throws IOException {
         String html = "<html><head><title>ORF.AT</title></head>"
                 + "<body>"
-                + "<p>Sample Content</p>"
                 + "<div id='sampleDiv'><a href='https://orf.at/'></a>"
-                + "<h3><a>Sample</a><h3>"
                 + "</div>"
                 + "</body></html>";
-
         Document document = Jsoup.parse(html);
-        try {
-            // get the page title
-            String TitleandWebsite = document.title();
-            System.out.println("Website:" + TitleandWebsite);
-            System.out.println("\n");
 
-            System.out.println("Top Headline News:");
-            System.out.println("\n");
+        // get the page title
+        String TitleandWebsite = document.title();
+        System.out.println("The Website that you're browsing: " + TitleandWebsite + " (URL: https://orf.at/)" + "\n");
+    }
+
+    //get the favicon from orf.at (the red circle :D)
+    public static void getIcon() throws IOException {
+        String favImage = "https://orf.at/mojo/1_4_1/storyserver//common/images/favicons/favicon-32x32.png";
+        Element element = getHtml().head().select("link[href~=.*\\.(image|png)]").first();
+
+        if (element == null) {
+            element = getHtml().head().select("meta[itemprop=image/png]").first();
+
+            if (element != null) {
+                favImage = element.attr("content");
+            }
+        } else {
+            favImage = element.attr("href");
+        }
+        System.out.println("Logo of this website: " + favImage + "\n");
+    }
+
+
+    // show all the links of different news within orf.at
+    public static void getAllLinks() throws IOException {
+
+        List<String> getAllLinks = new ArrayList<>();
+        Elements li1 = getHtml().select("a[href]");
+
+        if (li1 != null && getHtml().toString().contains("https")) {
+            for (Element link : li1) {
+                String li1Str = link.toString();
+                getAllLinks.add(li1Str);
+
+                System.out.println("Category: " + link.text());
+                System.out.println("Link: " + link.attr("href") + "\n");
+
+                // how can I remove the "#content" and "ss-networkNavigation" from the result?!
+                if (getAllLinks.contains("#content") || getAllLinks.contains("#ss-networkNavigation")) {
+                    System.out.println();
+                }
+            }
+        } else {
+            System.out.println("No Links can be displayed!!!");
+        }
+    }
+
+    // the below part is not finished, different Abteilungen von orf.at
+    public static void COVAusland() throws IOException {
+        // there are no news headline under COV-Ausland?! (inside the source codes)
+
+        ArrayList<String> COVAusland = new ArrayList<>();
+        Elements COVheadline = getHtml().select("div.oon-grid-texts-headline oon-grid-texts-shadow-10 oon-grid-texts-dimout-7 oon-grid-texts-letter-spacing-10");
+
+        if (COVheadline != null) {
+            for (Element h : COVheadline) {
+                Elements h1title = h.select("h1");
+                String Strh2 = h1title.toString().replace("<h1>", "").replace("</h1>", "");
+
+                COVAusland.add(Strh2);
+            }
+            System.out.println("title: ");
+            for (String h : COVAusland) {
+                System.out.println(h);
+            }
+
+        }
+    }
+}
+
+    /* public static void COVInland() throws IOException {
+        ArrayList<String> COVInland = new ArrayList<>();
+
+    }
+
+    public static void EU() throws IOException {
+        ArrayList<String> EU = new ArrayList<>();
+    }
+
+    public static void Inland() throws IOException {
+        ArrayList<String> Inland = new ArrayList<>();
+    }
+
+    public static void Ausland() throws IOException {
+        ArrayList<String> Ausland = new ArrayList<>();
+    }
+
+    public static void Sport() throws IOException {
+        ArrayList<String> Sport = new ArrayList<>();
+        String s = getHtml().absUrl("https://sport.orf.at/");
+        Elements Sportheadline = getHtml().select("div.oon-grid-texts-container");
+
+        for (Element sport1 : Sportheadline) {
+            Elements sporth1 = sport1.select("h1");
+            String h1 = sporth1.toString().replace("<h1>","").replace("</h1>","");
+
+            Sport.add(h1);
+        }
+        System.out.println("title1: ");
+        for (String sport1 : Sport) {
+            System.out.println(sport1 + "\n");
+        }
+    }
+}/*
 
             //Headline News
-            Elements list = document.select("li[class=interactive] a ");
+            /* Elements list = getHtml().select("li[class=interactive] a ");
             for (Element li : list) {
                 System.out.println(li.text());
                 System.out.println("Link:" + li.attr("href"));
                 System.out.println('\n');
-            }
+            } */
 
-            //Stories
-            Elements divs = getHtml().select("div[class=story] a");
+//Stories
+            /* Elements divs = getHtml().select("div[class=story] a");
             for (Element div : divs) {
                 System.out.println("Story:" + div.text());
                 System.out.println("Link:" + div.attr("href"));
                 System.out.println('\n');
             }
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
+        } */
 
-            // show the link of website
-            Elements links = document.select("a[href]");
-            for (Element link : links) {
-                System.out.println("link : " + link.attr("href"));
-            }
+/* Find all URLs that start with "https://orf.at/" and add them to the HashSet */
 
-            // get the fav icon if it exists (not necessary)
-            String favImage = "Not Found";
-            Element element = document.head().select("link[href~=.*\\.(ico|png)]").first();
-            if (element == null) {
-                element = document.head().select("meta[itemprop=image]").first();
-                if (element != null) {
-                    favImage = element.attr("content");
-                }
-            } else {
-                favImage = element.attr("href");
-            }
-            System.out.println(favImage);
-        }
-        /* Find all URLs that start with "https://orf.at/" and add them to the HashSet */
-
-        // Step 4. Check if you have already crawled the URLs
-        // (we are intentionally not checking for duplicate content in this example)
+// Step 4. Check if you have already crawled the URLs
+// (we are intentionally not checking for duplicate content in this example)
 
         /* public void getPageLinks(String url)
             if (!links.contains(url)) {
@@ -113,13 +188,3 @@ public class Mary extends WebCrawler {
             }
         }
     } */
-
-    // the below part is not finished
-    public static void COVAusland() throws IOException {
-
-        Document doc = Jsoup.connect("https://orf.at/").get();
-        for (Element headline : doc.select("div.headline")) {
-            System.out.println(headline.text());
-        }
-        }
-    }

@@ -25,16 +25,43 @@ public class WebCrawler {
         Sandra.breakingNews();
         Sandra.giveMeBackwards(Sandra.headlines());
 
-       //System.out.println(getHtml());
+        //System.out.println(getHtml());
 
 
 
 
 
 
-       Mary.TitleandWebsite();
-        /* new Mary().getPageLinks("https://orf.at/"); */ // not sure how can it be used??
-       Mary.COVAusland();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Mary.TitleandWebsite();
+        Mary.getIcon();
+        Mary.getAllLinks();
+        Mary.COVAusland();
 
     }
 }
