@@ -27,6 +27,9 @@ public class Phil extends WebCrawler {
             Random random = new Random();
 
 
+            // irgendwie muss das doch mit Random zu machen sein o.O
+            // es ist zu spät und ich bin zu müde um noch vernünftig Code aus meinem Hirn rauszukriegen -.-
+
             System.out.println("MixUp du gewählt hast:");
             System.out.println();
 
