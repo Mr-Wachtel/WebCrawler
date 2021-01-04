@@ -92,14 +92,14 @@ public class Sandra extends WebCrawler {
 
 // Breaking news, Latest News
 
-    public static void breakingNews() throws IOException {
+   // public static void breakingNews() throws IOException {
 
-        if (getHtml().toString().contains("ticker-breaking-special")) {
-            Elements breakingNews = getHtml().select("div#ticker-breaking-special");
+     //   if (getHtml().toString().contains("ticker-breaking-special")) {
+      //      Elements breakingNews = getHtml().select("div#ticker-breaking-special");
 
             // System.out.println(breakingNews);
 
-            if (breakingNews.toString().contains("h2")) {
+           /* if (breakingNews.toString().contains("h2")) {
 
 
                 for (Element e : breakingNews) {
@@ -125,44 +125,89 @@ public class Sandra extends WebCrawler {
 
             } else {
                 System.out.println("No breaking news");
+                System.out.println();*/
+
+          //  for (Element a : breakingNews) {
+            //    String testH2 = a.toString();
+              //  System.out.println(testH2);
+
+           // }
+
+
+
+
+        //for Shit an Giggles
+
+        public static void giveMeBackwards (ArrayList < String > headlines) {
+            String[] backwardsArry;
+            String backwardsString;
+            ArrayList<String> backwardsStringArrayList = new ArrayList<>();
+            for (String e : headlines) {
+                backwardsArry = e.split(" ");
+                StringBuilder backwardsStringBuilder = new StringBuilder();
+                for (int i = (backwardsArry.length - 1); i >= 0; i--) {
+                    backwardsStringBuilder.append(backwardsArry[i] + " ");
+                }
+                backwardsString = backwardsStringBuilder.toString()
+                        .replace(":", "")
+                        .replace("“", "")
+                        .replace("„", "");
+                backwardsStringArrayList.add(backwardsString);
+
+            }
+            System.out.println("headlines backwards");
+            System.out.println();
+
+            for (String e : backwardsStringArrayList) {
+                System.out.println(e);
                 System.out.println();
 
             }
-
         }
-    }
 
-    //for Shit an Giggles
+        public static ArrayList<String> otherHeadlines () throws IOException {
+            ArrayList<String> allOtherHeadlines = new ArrayList<>();
+            ArrayList<String> thisHeadline = new ArrayList<>();
 
-    public static void giveMeBackwards(ArrayList<String> headlines) {
-        String[] backwardsArry;
-        String backwardsString;
-        ArrayList<String> backwardsStringArrayList = new ArrayList<>();
-        for (String e : headlines) {
-            backwardsArry = e.split(" ");
-            StringBuilder backwardsStringBuilder = new StringBuilder();
-            for (int i = (backwardsArry.length - 1); i >= 0; i--) {
-                backwardsStringBuilder.append(backwardsArry[i] + " ");
+            Elements otherHeadlinesE = getHtml().select("div.ticker-ressort");
+
+            for (Element a : otherHeadlinesE) {
+                thisHeadline.clear();
+                Elements h2 = a.select("h2");
+                String testH2 = h2.toString();
+
+                int substrH2 = testH2.indexOf("<span>");
+                int substrH2End = testH2.indexOf("</span>");
+                testH2 = testH2.substring(substrH2, substrH2End)
+                        .replaceAll("<span>", "");
+
+                // headlines der einzellnen Unterordner
+                Elements h3 = a.select("h3");
+                for (Element b : h3) {
+                    String testH3 = b.toString();
+                    if (testH3.contains("=\"false\">")) {
+                        int substrH3 = testH3.indexOf("=\"false\">");
+                        int substrH3End = testH3.indexOf("</a");
+                        testH3 = testH3.substring(substrH3, substrH3End)
+                                .replaceAll("=\"false\">", "");
+                    }
+                    if (!testH3.contains("h3")) {
+                        allOtherHeadlines.add(testH3);
+                        thisHeadline.add(testH3);
+                    }
+                }
+                System.out.println();
+                System.out.println(testH2);
+                for (String d: thisHeadline)
+                System.out.println(d);
+
             }
-            backwardsString = backwardsStringBuilder.toString()
-                                                     .replace(":","")
-                                                     .replace("“","")
-                                                     .replace("„","");
-            backwardsStringArrayList.add(backwardsString);
+
+            return allOtherHeadlines;
 
         }
-        System.out.println("headlines backwards");
-        System.out.println();
 
-        for (String e : backwardsStringArrayList) {
-            System.out.println(e);
-            System.out.println();
-
-        }
-    }
 }
-
-
 
 
 

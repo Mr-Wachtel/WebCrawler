@@ -4,6 +4,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,17 +19,15 @@ public class WebCrawler {
 
     public static void main(String[] args) throws IOException {
 
-
+//var eingabe = JOptionPane.showInputDialog("Welche Methode?");
         Sandra.websideName();
         Sandra.headlines();
         Sandra.headlinesApp();
-        Sandra.breakingNews();
+       // Sandra.breakingNews();
         Sandra.giveMeBackwards(Sandra.headlines());
+        Sandra.otherHeadlines();
 
-        //System.out.println(getHtml());
-
-
-
+      // System.out.println(getHtml());
 
 
 
@@ -57,12 +56,17 @@ public class WebCrawler {
 
 
 
-     //   System.out.println(getHtml());
 
-        Mary.TitleandWebsite();
-      //  Mary.getIcon();
-      //  Mary.getAllLinks();
-        Mary.COVAusland();
+
+        // Mary.TitleandWebsite();
+        //  Mary.getIcon();
+        //  Mary.getAllLinks();
+        //   Mary.COVAusland();
+
+
+
+
+
 
 
 
@@ -138,7 +142,8 @@ public class WebCrawler {
 
 
 
-        Phil.mixUpMyCaptions(Sandra.headlines());
+        //Phil.mixUpMyCaptions(Sandra.headlines());
+
 
     }
 }
