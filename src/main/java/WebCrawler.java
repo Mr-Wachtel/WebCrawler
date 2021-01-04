@@ -60,8 +60,8 @@ public class WebCrawler {
      //   System.out.println(getHtml());
 
         Mary.TitleandWebsite();
-        Mary.getIcon();
-        Mary.getAllLinks();
+      //  Mary.getIcon();
+      //  Mary.getAllLinks();
         Mary.COVAusland();
 
 
@@ -136,6 +136,9 @@ public class WebCrawler {
 
         // Start - PHIL
 
+
+
+        Phil.mixUpMyCaptions(Sandra.headlines());
 
     }
 }
