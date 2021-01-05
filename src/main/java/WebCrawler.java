@@ -12,55 +12,55 @@ import java.util.List;
 public class WebCrawler {
 
     // HTML der Webseite holen und in Document doc speichern
-    public static Document getHtml() throws IOException {
-        Document doc = Jsoup.connect("https://orf.at/").userAgent("Mozilla").get();
+    public static Document getHtml() {
+        Document doc = null;
+        try {
+            doc = Jsoup.connect("https://orf.at/").userAgent("Mozilla").get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return doc;
     }
 
     public static void main(String[] args) throws IOException {
 
-//var eingabe = JOptionPane.showInputDialog("Welche Methode?");
-        Sandra.websideName();
-        Sandra.headlines();
-        Sandra.headlinesApp();
-       // Sandra.breakingNews();
-        Sandra.giveMeBackwards(Sandra.headlines());
-        Sandra.otherHeadlines();
+        System.out.println();
+        System.out.println("Die Überschrift der Webseite lautet: " + Sandra.websideName());
+        System.out.println();
 
-      // System.out.println(getHtml());
+        System.out.println();
+        System.out.println("Normalansicht Überschriften");
+        System.out.println();
+        for (String e : Sandra.headlines()) {
+        System.out.println(e);
+        System.out.println();}
 
+        System.out.println();
+        System.out.println("App Überschriften");
+        System.out.println();
+        for (String e :  Sandra.headlinesApp()) {
+            System.out.println(e);
+            System.out.println();}
 
+        System.out.println();
+        System.out.println("headlines backwards");
+        System.out.println();
+        for (String e : Sandra.giveMeBackwards(Sandra.headlines())) {
+            System.out.println(e);
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println("other headlines");
+        System.out.println();
+        for (String e : Sandra.otherHeadlines()) {
+            System.out.println(e);
+            System.out.println();
+        }
+     // System.out.println(getHtml());
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // Mary.TitleandWebsite();
-        //  Mary.getIcon();
-        //  Mary.getAllLinks();
+        Mary.TitleandWebsite();
+        //Mary.getIcon();
+      //  Mary.getAllLinks();
         //   Mary.COVAusland();
 
 
@@ -142,7 +142,7 @@ public class WebCrawler {
 
 
 
-        //Phil.mixUpMyCaptions(Sandra.headlines());
+        Phil.mixUpMyCaptions(Sandra.headlines());
 
 
     }
