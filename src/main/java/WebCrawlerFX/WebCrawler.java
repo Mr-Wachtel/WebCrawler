@@ -1,11 +1,16 @@
 package WebCrawlerFX;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
-public class WebCrawler {
+public class WebCrawler extends Application {
 
     // HTML der Webseite holen und in Document doc speichern
     public static Document getHtml() {
@@ -139,6 +144,17 @@ public class WebCrawler {
 
 
         Phil.mixUpMyCaptions(Sandra.headlines());
+        launch(args);
+    }
+
+  @Override
+    public void start(Stage primaryStage) throws Exception {
+
+          Parent root = FXMLLoader.load(this.getClass().getResource("/sample.fxml"));
+          primaryStage.setTitle("WebCrawler Test");
+          primaryStage.setScene(new Scene(root, 300, 275));
+          primaryStage.show();
+
 
     }
 }
