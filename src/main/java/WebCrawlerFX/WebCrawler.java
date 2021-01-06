@@ -140,7 +140,5 @@ public class WebCrawler {
 
         Phil.mixUpMyCaptions(Sandra.headlines());
 
-        Test Test
-
     }
 }
