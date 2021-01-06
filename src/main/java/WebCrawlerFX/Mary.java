@@ -1,12 +1,12 @@
+package WebCrawlerFX;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 
 public class Mary extends WebCrawler {
 
@@ -71,29 +71,29 @@ public class Mary extends WebCrawler {
             exception.printStackTrace();
         }
 
-            // show the link of website
-            Elements links = document.select("a[href]");
-            for (Element link : links) {
-                System.out.println("link : " + link.attr("href"));
-            }
-
-            // get the fav icon if it exists (not necessary)
-            String favImage = "Not Found";
-            Element element = document.head().select("link[href~=.*\\.(ico|png)]").first();
-            if (element == null) {
-                element = document.head().select("meta[itemprop=image]").first();
-                if (element != null) {
-                    favImage = element.attr("content");
-                }
-            } else {
-                favImage = element.attr("href");
-            }
-            System.out.println(favImage);
+        // show the link of website
+        Elements links = document.select("a[href]");
+        for (Element link : links) {
+            System.out.println("link : " + link.attr("href"));
         }
-        /* Find all URLs that start with "https://orf.at/" and add them to the HashSet */
 
-        // Step 4. Check if you have already crawled the URLs
-        // (we are intentionally not checking for duplicate content in this example)
+        // get the fav icon if it exists (not necessary)
+        String favImage = "Not Found";
+        Element element = document.head().select("link[href~=.*\\.(ico|png)]").first();
+        if (element == null) {
+            element = document.head().select("meta[itemprop=image]").first();
+            if (element != null) {
+                favImage = element.attr("content");
+            }
+        } else {
+            favImage = element.attr("href");
+        }
+        System.out.println(favImage);
+    }
+    /* Find all URLs that start with "https://orf.at/" and add them to the HashSet */
+
+    // Step 4. Check if you have already crawled the URLs
+    // (we are intentionally not checking for duplicate content in this example)
 
         /* public void getPageLinks(String url)
             if (!links.contains(url)) {
@@ -123,5 +123,5 @@ public class Mary extends WebCrawler {
         for (Element headline : doc.select("div.headline")) {
             System.out.println(headline.text());
         }
-        }
     }
+}

@@ -1,15 +1,16 @@
+package WebCrawlerFX;
+
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Sandra extends WebCrawler {
 
     // Überschrift der durchsuchten Webseite
     public static String websideName() throws IOException {
-        String title = getHtml().title();
+        String title = WebCrawler.getHtml().title();
         return title;
 
     }
@@ -20,7 +21,7 @@ public class Sandra extends WebCrawler {
 
         ArrayList<String> headlinesApp = new ArrayList<>();
 
-        Elements appBig = getHtml().select("div.oon-grid-texts-container-mobile");
+        Elements appBig = WebCrawler.getHtml().select("div.oon-grid-texts-container-mobile");
         for (Element e : appBig) {
             Elements h1 = e.select("h1");
             String stringH1 = h1.toString()
@@ -43,7 +44,7 @@ public class Sandra extends WebCrawler {
     public static ArrayList<String> headlines() throws IOException {
 
         ArrayList<String> headlines = new ArrayList<>();
-        Elements big = getHtml().select("div.oon-grid-texts-container");
+        Elements big = WebCrawler.getHtml().select("div.oon-grid-texts-container");
         for (Element e : big) {
             String test = e.toString();
             if (!test.contains("-mobile")) {
@@ -88,7 +89,7 @@ public class Sandra extends WebCrawler {
             ArrayList<String> allOtherHeadlines = new ArrayList<>();
           //  ArrayList<String> thisHeadline = new ArrayList<>();
 
-            Elements otherHeadlinesE = getHtml().select("div.ticker-ressort");
+            Elements otherHeadlinesE = WebCrawler.getHtml().select("div.ticker-ressort");
 
             for (Element a : otherHeadlinesE) {
                 //thisHeadline.clear();

@@ -1,13 +1,9 @@
-import com.sun.tools.javac.Main;
+package WebCrawlerFX;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import javax.swing.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class WebCrawler {
 
@@ -32,8 +28,8 @@ public class WebCrawler {
         System.out.println("Normalansicht Überschriften");
         System.out.println();
         for (String e : Sandra.headlines()) {
-        System.out.println(e);
-        System.out.println();}
+            System.out.println(e);
+            System.out.println();}
 
         System.out.println();
         System.out.println("App Überschriften");
@@ -56,11 +52,11 @@ public class WebCrawler {
             System.out.println(e);
             System.out.println();
         }
-     // System.out.println(getHtml());
+        // System.out.println(getHtml());
 
         Mary.TitleandWebsite();
         //Mary.getIcon();
-      //  Mary.getAllLinks();
+        //  Mary.getAllLinks();
         //   Mary.COVAusland();
 
 
