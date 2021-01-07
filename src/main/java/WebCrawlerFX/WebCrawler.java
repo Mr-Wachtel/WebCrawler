@@ -34,7 +34,7 @@ public class WebCrawler extends Application {
 
           Parent root = FXMLLoader.load(this.getClass().getResource("/sample.fxml"));
           primaryStage.setTitle("ORF Mighty Duck Style!");
-          primaryStage.setScene(new Scene(root, 560,300));
+          primaryStage.setScene(new Scene(root, 600,400));
           primaryStage.show();
 
 
