@@ -16,6 +16,8 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
+
+
       <CheckBox fx:id="checkbox1" mnemonicParsing="false" onAction="#clickcheckbox1" prefHeight="53.0" prefWidth="268.0" text="CheckBox" />
    </children>
 </GridPane>
