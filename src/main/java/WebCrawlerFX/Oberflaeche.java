@@ -3,29 +3,65 @@ package WebCrawlerFX;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-
-import java.io.IOException;
 
 public class Oberflaeche {
-
-    @FXML
-    private CheckBox checkbox1;
 
     @FXML
     private Button Button_MixUp;
 
     @FXML
-    void Button_MixUP(ActionEvent event) throws IOException {
+    private Button GiveMeBackwards;
 
-        ShitAndGiggels.mixUpMyCaptions(Headlines.headlines());
+    @FXML
+    private Button GiveMeLinks;
+
+    @FXML
+    private Button GiveMeORF;
+
+    @FXML
+    private Button GiveMeHeadlines;
+
+    @FXML
+    private Button GiveMeMobileHeadlines;
+
+    @FXML
+    private Button GiveMeSubHeadlines;
+
+    @FXML
+    void Button_MixUP(ActionEvent event) {
 
     }
 
     @FXML
-    void clickcheckbox1(ActionEvent event) {
+    void GiveMeBackwards(ActionEvent event) {
+
+    }
+
+    @FXML
+    void GiveMeHeadlines(ActionEvent event) {
+
+    }
+
+    @FXML
+    void GiveMeLinks(ActionEvent event) {
+
+    }
+
+    @FXML
+    void GiveMeMobileHeadlines(ActionEvent event) {
+
+    }
+
+    @FXML
+    void GiveMeORF(ActionEvent event) {
+
+    }
+
+    @FXML
+    void GiveMeSubHeadlines(ActionEvent event) {
 
     }
 
 }
+
 
