@@ -18,7 +18,7 @@ public class Oberflaeche {
     @FXML
     void Button_MixUP(ActionEvent event) throws IOException {
 
-        Phil.mixUpMyCaptions(Sandra.headlines());
+        ShitAndGiggels.mixUpMyCaptions(Headlines.headlines());
 
     }
 

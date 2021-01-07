@@ -26,40 +26,40 @@ public class WebCrawler extends Application {
     public static void main(String[] args) throws IOException {
 
         System.out.println();
-        System.out.println("Die Überschrift der Webseite lautet: " + Sandra.websideName());
+        System.out.println("Die Überschrift der Webseite lautet: " + WhatHappens.websideName());
         System.out.println();
 
         System.out.println();
         System.out.println("Normalansicht Überschriften");
         System.out.println();
-        for (String e : Sandra.headlines()) {
+        for (String e : Headlines.headlines()) {
             System.out.println(e);
             System.out.println();}
 
         System.out.println();
         System.out.println("App Überschriften");
         System.out.println();
-        for (String e :  Sandra.headlinesApp()) {
+        for (String e :  Headlines.headlinesApp()) {
             System.out.println(e);
             System.out.println();}
 
         System.out.println();
         System.out.println("headlines backwards");
         System.out.println();
-        for (String e : Sandra.giveMeBackwards(Sandra.headlines())) {
+        for (String e : ShitAndGiggels.giveMeBackwards(Headlines.headlines())) {
             System.out.println(e);
             System.out.println();
         }
         System.out.println();
         System.out.println("other headlines");
         System.out.println();
-        for (String e : Sandra.otherHeadlines()) {
+        for (String e : Headlines.otherHeadlines()) {
             System.out.println(e);
             System.out.println();
         }
         // System.out.println(getHtml());
 
-        Mary.TitleandWebsite();
+        WhatHappens.links();
         //Mary.getIcon();
         //  Mary.getAllLinks();
         //   Mary.COVAusland();
@@ -143,7 +143,7 @@ public class WebCrawler extends Application {
 
 
 
-        Phil.mixUpMyCaptions(Sandra.headlines());
+        ShitAndGiggels.mixUpMyCaptions(Headlines.headlines());
         launch(args);
     }
 

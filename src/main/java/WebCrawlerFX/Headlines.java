@@ -6,14 +6,9 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Sandra extends WebCrawler {
+public class Headlines extends WebCrawler {
 
-    // Überschrift der durchsuchten Webseite
-    public static String websideName() throws IOException {
-        String title = WebCrawler.getHtml().title();
-        return title;
 
-    }
 
     // Headlines (der Appansicht)  als String - Liste
     // Headlines für die App Version sind im "oon-grid-texts-container-mobile" Absatz
@@ -64,26 +59,7 @@ public class Sandra extends WebCrawler {
     }
 
 
-        //for Shit an Giggles
 
-        public static ArrayList<String> giveMeBackwards (ArrayList < String > headlines) {
-            String[] backwardsArry;
-            String backwardsString;
-            ArrayList<String> backwardsStringArrayList = new ArrayList<>();
-            for (String e : headlines) {
-                backwardsArry = e.split(" ");
-                StringBuilder backwardsStringBuilder = new StringBuilder();
-                for (int i = (backwardsArry.length - 1); i >= 0; i--) {
-                    backwardsStringBuilder.append(backwardsArry[i] + " ");
-                }
-                backwardsString = backwardsStringBuilder.toString()
-                        .replace(":", "")
-                        .replace("“", "")
-                        .replace("„", "");
-                backwardsStringArrayList.add(backwardsString);
-            }
-            return backwardsStringArrayList;
-        }
 
         public static ArrayList<String> otherHeadlines () throws IOException {
             ArrayList<String> allOtherHeadlines = new ArrayList<>();
