@@ -152,7 +152,7 @@ public class WebCrawler extends Application {
 
           Parent root = FXMLLoader.load(this.getClass().getResource("/sample.fxml"));
           primaryStage.setTitle("WebCrawler Test");
-          primaryStage.setScene(new Scene(root, 300, 275));
+          primaryStage.setScene(new Scene(root, 400, 300));
           primaryStage.show();
 
 
