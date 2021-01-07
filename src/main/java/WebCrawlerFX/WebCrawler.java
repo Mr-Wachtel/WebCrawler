@@ -25,125 +25,7 @@ public class WebCrawler extends Application {
 
     public static void main(String[] args) throws IOException {
 
-        System.out.println();
-        System.out.println("Die Überschrift der Webseite lautet: " + WhatHappens.websideName());
-        System.out.println();
 
-        System.out.println();
-        System.out.println("Normalansicht Überschriften");
-        System.out.println();
-        for (String e : Headlines.headlines()) {
-            System.out.println(e);
-            System.out.println();}
-
-        System.out.println();
-        System.out.println("App Überschriften");
-        System.out.println();
-        for (String e :  Headlines.headlinesApp()) {
-            System.out.println(e);
-            System.out.println();}
-
-        System.out.println();
-        System.out.println("headlines backwards");
-        System.out.println();
-        for (String e : ShitAndGiggels.giveMeBackwards(Headlines.headlines())) {
-            System.out.println(e);
-            System.out.println();
-        }
-        System.out.println();
-        System.out.println("other headlines");
-        System.out.println();
-        for (String e : Headlines.otherHeadlines()) {
-            System.out.println(e);
-            System.out.println();
-        }
-        // System.out.println(getHtml());
-
-        WhatHappens.links();
-        //Mary.getIcon();
-        //  Mary.getAllLinks();
-        //   Mary.COVAusland();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // Start - PHIL
-
-
-
-        ShitAndGiggels.mixUpMyCaptions(Headlines.headlines());
         launch(args);
     }
 
@@ -151,7 +33,7 @@ public class WebCrawler extends Application {
     public void start(Stage primaryStage) throws Exception {
 
           Parent root = FXMLLoader.load(this.getClass().getResource("/sample.fxml"));
-          primaryStage.setTitle("WebCrawler Test");
+          primaryStage.setTitle("ORF Mighty Duck Style!");
           primaryStage.setScene(new Scene(root, 560,300));
           primaryStage.show();
 
