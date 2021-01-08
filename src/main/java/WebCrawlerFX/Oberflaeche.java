@@ -1,8 +1,14 @@
 package WebCrawlerFX;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -41,10 +47,14 @@ public class Oberflaeche {
         System.out.println();
         System.out.println("Headlines Backwards");
         System.out.println();
+
+        StringBuilder text = new StringBuilder();
         for (String e : ShitAndGiggels.giveMeBackwards(Headlines.headlines())) {
+            text.append(e).append(System.lineSeparator());
             System.out.println(e);
             System.out.println();
         }
+        loadTextScreen(event, text.toString());
     }
 
     @FXML
@@ -93,6 +103,36 @@ public class Oberflaeche {
             System.out.println();
         }
 
+    }
+
+    private void loadTextScreen(Event event, String text){
+        Node node = (Node) event.getSource();
+        Stage stageTheEventSourceNodeBelongs = (Stage) node.getScene().getWindow();
+        stageTheEventSourceNodeBelongs.close();
+
+        try {
+            // load fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("textscreen.fxml"));
+            // initialize controller manually to pass values - remove controller from fxml!
+            TextscreenController controller = new TextscreenController();
+            // pass the values to controller instance
+            controller.setText(text);
+
+            // set the controller to fxml
+            loader.setController(controller);
+
+            Parent root = loader.load();
+
+            // call initialize method to set the elements
+            controller.initialize();
+
+            // show scene
+            Scene scene = new Scene(root, 600,400);
+            stageTheEventSourceNodeBelongs.setScene(scene);
+            stageTheEventSourceNodeBelongs.show();
+        } catch (IOException e){
+            System.out.println("Error loading scene.");
+        }
     }
 
 }
