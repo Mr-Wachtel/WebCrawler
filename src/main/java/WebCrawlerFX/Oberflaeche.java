@@ -39,7 +39,7 @@ public class Oberflaeche {
     void GiveMeBackwards(ActionEvent event) throws IOException {
 
         System.out.println();
-        System.out.println("headlines backwards");
+        System.out.println("Headlines Backwards");
         System.out.println();
         for (String e : ShitAndGiggels.giveMeBackwards(Headlines.headlines())) {
             System.out.println(e);
@@ -86,7 +86,7 @@ public class Oberflaeche {
     @FXML
     void GiveMeSubHeadlines(ActionEvent event) throws IOException {
         System.out.println();
-        System.out.println("other headlines");
+        System.out.println("Other Headlines");
         System.out.println();
         for (String e : Headlines.otherHeadlines()) {
             System.out.println(e);

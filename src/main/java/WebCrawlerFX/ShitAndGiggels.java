@@ -25,6 +25,7 @@ public class ShitAndGiggels extends WebCrawler {
         }
 
 
+        System.out.println();
         System.out.println("MixUp du gewählt hast:");
         System.out.println();
 
