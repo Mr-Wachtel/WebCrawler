@@ -40,8 +40,11 @@ ShitnGiggles:
 Headlines werden von der Headlines übergeben und verunstaltet :)
 
 
-Oberfläche:
+Oberfläche / Sample.fxml:
 Config File für die Buttons und der grafischen Oberfläche
+
+
+
 
 
 
