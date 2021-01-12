@@ -10,7 +10,7 @@
         <Insets topRightBottomLeft="15" />
     </padding>
 
-    <Label fx:id="label" />
+    <Label fx:id="label" maxHeight="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
    <Button fx:id="GoBack" layoutX="10.0" mnemonicParsing="false" text="Nochmal" />
 
 </VBox>

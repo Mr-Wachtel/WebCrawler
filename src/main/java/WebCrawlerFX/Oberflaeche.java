@@ -15,7 +15,7 @@ import java.io.IOException;
 public class Oberflaeche {
 
     @FXML
-    private Button GoBackTo;
+    private Button GoBack;
 
     @FXML
     private Button Button_MixUp;
@@ -159,15 +159,7 @@ public class Oberflaeche {
         }
     }
 
-    public void GoBackTo(ActionEvent actionEvent) throws IOException {
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("/sample.fxml"));
-        Scene tableviewScene = new Scene(tableViewParent);
-        //Stage Info
 
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        window.setScene(tableviewScene);
-        window.show();
-    }
 
 
 }
