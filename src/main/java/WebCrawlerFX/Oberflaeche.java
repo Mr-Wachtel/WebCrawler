@@ -15,6 +15,9 @@ import java.io.IOException;
 public class Oberflaeche {
 
     @FXML
+    private Button GoBackTo;
+
+    @FXML
     private Button Button_MixUp;
 
     @FXML
@@ -38,72 +41,93 @@ public class Oberflaeche {
     @FXML
     void Button_MixUP(ActionEvent event) throws IOException {
 
-        ShitAndGiggels.mixUpMyCaptions(Headlines.headlines());
+        StringBuilder text = new StringBuilder("MixUp du gewählt hast: ");
+        text.append(System.lineSeparator());
+        text.append(System.lineSeparator());
+        text.append(ShitAndGiggels.mixUpMyCaptions(Headlines.headlines()));
+
+        loadTextScreen(event, text.toString());
     }
+
+
+
 
     @FXML
     void GiveMeBackwards(ActionEvent event) throws IOException {
 
-        System.out.println();
-        System.out.println("headlines backwards");
-        System.out.println();
-
-        StringBuilder text = new StringBuilder();
+      StringBuilder text = new StringBuilder("headlines backwards");
+      text.append(System.lineSeparator());
+      text.append(System.lineSeparator());
         for (String e : ShitAndGiggels.giveMeBackwards(Headlines.headlines())) {
             text.append(e).append(System.lineSeparator());
-            System.out.println(e);
-            System.out.println();
         }
-        loadTextScreen(event, text.toString());
+       loadTextScreen(event, text.toString());
     }
 
     @FXML
     void GiveMeHeadlines(ActionEvent event) throws IOException {
 
-        System.out.println();
-        System.out.println("Normalansicht Überschriften");
-        System.out.println();
+        StringBuilder text = new StringBuilder("Normalansicht Überschriften");
+        text.append(System.lineSeparator());
+        text.append(System.lineSeparator());
         for (String e : Headlines.headlines()) {
-            System.out.println(e);
-            System.out.println();}
-
+            text.append(e).append(System.lineSeparator());
+        }
+        loadTextScreen(event, text.toString());
     }
+
+
 
     @FXML
     void GiveMeLinks(ActionEvent event) throws IOException {
-        WhatHappens.links();
+
+        StringBuilder text = new StringBuilder("links");
+        text.append(System.lineSeparator());
+        text.append(System.lineSeparator());
+        for (String e : WhatHappens.links()) {
+            text.append(e).append(System.lineSeparator());
+        }
+        loadTextScreen(event, text.toString());
     }
+
 
     @FXML
     void GiveMeMobileHeadlines(ActionEvent event) throws IOException {
-        System.out.println();
-        System.out.println("App Überschriften");
-        System.out.println();
-        for (String e :  Headlines.headlinesApp()) {
-            System.out.println(e);
-            System.out.println();}
 
+        StringBuilder text = new StringBuilder("App Überschriften");
+        text.append(System.lineSeparator());
+        text.append(System.lineSeparator());
+        for (String e : Headlines.headlinesApp()) {
+            text.append(e).append(System.lineSeparator());
+        }
+        loadTextScreen(event, text.toString());
     }
 
     @FXML
     void GiveMeORF(ActionEvent event) throws IOException {
-        System.out.println();
-        System.out.println("Die Überschrift der Webseite lautet: " + WhatHappens.websideName());
-        System.out.println();
 
+        StringBuilder text = new StringBuilder("Die Überschrift der Webseite lautet: ");
+        text.append(System.lineSeparator());
+        text.append(System.lineSeparator());
+        text.append(WhatHappens.websideName());
+
+        loadTextScreen(event, text.toString());
     }
+
+
 
     @FXML
     void GiveMeSubHeadlines(ActionEvent event) throws IOException {
-        System.out.println();
-        System.out.println("other headlines");
-        System.out.println();
-        for (String e : Headlines.otherHeadlines()) {
-            System.out.println(e);
-            System.out.println();
-        }
 
+        StringBuilder text = new StringBuilder("other headlines");
+        text.append(System.lineSeparator());
+        text.append(System.lineSeparator());
+        for (String e : Headlines.otherHeadlines()) {
+            text.append(e).append(System.lineSeparator());
+        }
+        loadTextScreen(event, text.toString());
     }
+
 
     private void loadTextScreen(Event event, String text){
         Node node = (Node) event.getSource();
@@ -134,6 +158,17 @@ public class Oberflaeche {
             System.out.println("Error loading scene.");
         }
     }
+
+    public void GoBackTo(ActionEvent actionEvent) throws IOException {
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("/sample.fxml"));
+        Scene tableviewScene = new Scene(tableViewParent);
+        //Stage Info
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableviewScene);
+        window.show();
+    }
+
 
 }
 

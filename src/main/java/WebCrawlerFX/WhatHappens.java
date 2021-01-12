@@ -13,16 +13,17 @@ public class WhatHappens extends WebCrawler {
 
 
     // show the link of website
-    public static void links() throws IOException {
+    public static ArrayList<String> links() throws IOException {
+        ArrayList<String> linksArrayList = new ArrayList<>();
 
-    Elements links = WebCrawler.getHtml().select("a[href]");
-        for (Element e : links)
-
-    {
-        System.out.println("link : " + e.attr("href"));
+        Elements links = WebCrawler.getHtml().select("a[href]");
+        for (Element e : links) {
+            linksArrayList.add("link : " + e.attr("href"));
+        }
+        return linksArrayList;
     }
 
-}
+
 
     // Überschrift der durchsuchten Webseite
     public static String websideName() throws IOException {
