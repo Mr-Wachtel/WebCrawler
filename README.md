@@ -1,6 +1,6 @@
 # Vorwort
 
-Wer träumt nicht davon ein Programm zu haben mit dem man in Echtzeit alle Headlines von orf.at abrufen kann ohne die Seite selbst zu besuchen?
+Wer träumt nicht davon ein Programm zu haben mit dem man in Echtzeit alle Headlines von orf.at abrufen kann, ohne die Seite selbst zu besuchen?
 Das träumen hat ein Ende!
 
 
@@ -10,7 +10,7 @@ The Mighty Ducks präsentieren stolz den Mighty ORF Crawler!
 
 Über eine grafische Oberfläche kannst du auswählen was du ausgegeben haben willst:
 
-- Abfrage ob du eh auf orf.at bist
+- Abfrage, ob du eh auf orf.at bist
 - Main Headlines
 - Main Headlines wie in der Mobile App
 - Headlines der Spezialkategorien (COV, Inland, Ausland, Panorama, etc...)
@@ -34,10 +34,10 @@ Headlines:
 Verarbeitung des HTML Codes damit nur mehr die Headlines in Strings gespeichert werden.
 
 WhatHappens:
-Link ausgabe und Websiten Name ausgabe
+Link Ausgabe und Website Name Ausgabe
 
 ShitnGiggles:
-Headlines werden von der Headlines übergeben und verunstaltet :)
+Headlines werden von der Klasse Headlines übergeben und verunstaltet :)
 
 
 Oberfläche / Sample.fxml:
