@@ -55,7 +55,7 @@ public class Oberflaeche {
     @FXML
     void GiveMeBackwards(ActionEvent event) throws IOException {
 
-      StringBuilder text = new StringBuilder("headlines backwards");
+      StringBuilder text = new StringBuilder("Headlines Backwards");
       text.append(System.lineSeparator());
       text.append(System.lineSeparator());
         for (String e : ShitAndGiggels.giveMeBackwards(Headlines.headlines())) {
@@ -81,7 +81,7 @@ public class Oberflaeche {
     @FXML
     void GiveMeLinks(ActionEvent event) throws IOException {
 
-        StringBuilder text = new StringBuilder("links");
+        StringBuilder text = new StringBuilder("Links");
         text.append(System.lineSeparator());
         text.append(System.lineSeparator());
         for (String e : WhatHappens.links()) {
@@ -119,7 +119,7 @@ public class Oberflaeche {
     @FXML
     void GiveMeSubHeadlines(ActionEvent event) throws IOException {
 
-        StringBuilder text = new StringBuilder("other headlines");
+        StringBuilder text = new StringBuilder("Other Headlines");
         text.append(System.lineSeparator());
         text.append(System.lineSeparator());
         for (String e : Headlines.otherHeadlines()) {
