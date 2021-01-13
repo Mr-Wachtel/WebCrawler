@@ -92,7 +92,9 @@ public class Headlines extends WebCrawler {
                         allOtherHeadlines.add(testH3);
                         //thisHeadline.add(testH3);
                     }
+                   // allOtherHeadlines.add(System.lineSeparator());
                 }
+                allOtherHeadlines.add(System.lineSeparator());
               /*  System.out.println();
                 System.out.println(testH2);
                 for (String d: thisHeadline)

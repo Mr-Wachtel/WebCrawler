@@ -6,7 +6,7 @@ import java.util.Random;
 public class ShitAndGiggels extends WebCrawler {
 
 
-    public static void mixUpMyCaptions(ArrayList<String> mixup) {
+    public static String mixUpMyCaptions(ArrayList<String> mixup) {
 
 
         String[] MixUpArray;
@@ -25,11 +25,7 @@ public class ShitAndGiggels extends WebCrawler {
         }
 
 
-        System.out.println();
-        System.out.println("MixUp du gewählt hast:");
-        System.out.println();
-
-        System.out.println(MixUpStringBuilder);
+        return MixUpStringBuilder.toString();
 
 
         // for (String aftermix : MixUpStringArrayList) {

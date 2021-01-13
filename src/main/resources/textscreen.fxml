@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      prefHeight="400.0" prefWidth="600.0" spacing="15" alignment="CENTER">
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="15" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
 
-<padding>
-    <Insets topRightBottomLeft="15" />
-</padding>
+    <padding>
+        <Insets topRightBottomLeft="15" />
+    </padding>
 
-    <Label fx:id="label"></Label>
-    <TextArea fx:id="textArea" />
+    <Label fx:id="label" maxHeight="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
+   <Button fx:id="GoBack" layoutX="10.0" mnemonicParsing="false" text="Nochmal" />
 
 </VBox>
