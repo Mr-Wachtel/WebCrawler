@@ -41,7 +41,7 @@ public class Oberflaeche {
     @FXML
     void Button_MixUP(ActionEvent event) throws IOException {
 
-        StringBuilder text = new StringBuilder("MixUp du gewählt hast: ");
+        StringBuilder text = new StringBuilder("MixUp du gew\u00E4hlt hast: ");
         text.append(System.lineSeparator());
         text.append(System.lineSeparator());
         text.append(ShitAndGiggels.mixUpMyCaptions(Headlines.headlines()));
@@ -67,7 +67,7 @@ public class Oberflaeche {
     @FXML
     void GiveMeHeadlines(ActionEvent event) throws IOException {
 
-        StringBuilder text = new StringBuilder("Normalansicht Überschriften");
+        StringBuilder text = new StringBuilder("Normalansicht \u00DCberschriften");
         text.append(System.lineSeparator());
         text.append(System.lineSeparator());
         for (String e : Headlines.headlines()) {
@@ -94,7 +94,7 @@ public class Oberflaeche {
     @FXML
     void GiveMeMobileHeadlines(ActionEvent event) throws IOException {
 
-        StringBuilder text = new StringBuilder("App Überschriften");
+        StringBuilder text = new StringBuilder("App \u00DCberschriften");
         text.append(System.lineSeparator());
         text.append(System.lineSeparator());
         for (String e : Headlines.headlinesApp()) {
@@ -106,7 +106,7 @@ public class Oberflaeche {
     @FXML
     void GiveMeORF(ActionEvent event) throws IOException {
 
-        StringBuilder text = new StringBuilder("Die Überschrift der Webseite lautet: ");
+        StringBuilder text = new StringBuilder("Die \u00DCberschrift der Webseite lautet: ");
         text.append(System.lineSeparator());
         text.append(System.lineSeparator());
         text.append(WhatHappens.websideName());
