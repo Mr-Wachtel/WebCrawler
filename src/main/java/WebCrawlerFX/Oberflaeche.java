@@ -40,15 +40,15 @@ public class Oberflaeche {
 
     @FXML
     void Button_MixUP(ActionEvent event) throws IOException {
+        String headline ="MixUp du gew\u00E4hlt hast: ";
 
-        StringBuilder text = new StringBuilder("MixUp du gew\u00E4hlt hast: ");
-        text.append(System.lineSeparator());
+        StringBuilder text = new StringBuilder();
         text.append(System.lineSeparator());
         text.append(ShitAndGiggels.mixUpMyCaptions(Headlines.headlines()));
 
 
 
-        loadTextScreen(event, text.toString());
+        loadTextScreen(event, text.toString(),headline);
     }
 
 
@@ -57,25 +57,28 @@ public class Oberflaeche {
     @FXML
     void GiveMeBackwards(ActionEvent event) throws IOException {
 
-      StringBuilder text = new StringBuilder("Headlines Backwards");
-      text.append(System.lineSeparator());
+        String headline ="Headlines Backwards";
+
+      StringBuilder text = new StringBuilder();
       text.append(System.lineSeparator());
         for (String e : ShitAndGiggels.giveMeBackwards(Headlines.headlines())) {
             text.append(e).append(System.lineSeparator());
         }
-       loadTextScreen(event, text.toString());
+       loadTextScreen(event, text.toString(),headline);
+
     }
 
     @FXML
     void GiveMeHeadlines(ActionEvent event) throws IOException {
 
-        StringBuilder text = new StringBuilder("Normalansicht \u00DCberschriften");
-        text.append(System.lineSeparator());
+        String headline ="Normalansicht \u00DCberschriften";
+
+        StringBuilder text = new StringBuilder();
         text.append(System.lineSeparator());
         for (String e : Headlines.headlines()) {
             text.append(e).append(System.lineSeparator());
         }
-        loadTextScreen(event, text.toString());
+        loadTextScreen(event, text.toString(),headline);
     }
 
 
@@ -83,37 +86,38 @@ public class Oberflaeche {
     @FXML
     void GiveMeLinks(ActionEvent event) throws IOException {
 
-        StringBuilder text = new StringBuilder("Links");
-        text.append(System.lineSeparator());
+        String headline ="Links";
+
+        StringBuilder text = new StringBuilder();
         text.append(System.lineSeparator());
         for (String e : WhatHappens.links()) {
             text.append(e).append(System.lineSeparator());
         }
-        loadTextScreen(event, text.toString());
+        loadTextScreen(event, text.toString(),headline);
     }
 
 
     @FXML
     void GiveMeMobileHeadlines(ActionEvent event) throws IOException {
+        String headline ="App \u00DCberschriften";
 
-        StringBuilder text = new StringBuilder("App \u00DCberschriften");
-        text.append(System.lineSeparator());
+        StringBuilder text = new StringBuilder();
         text.append(System.lineSeparator());
         for (String e : Headlines.headlinesApp()) {
             text.append(e).append(System.lineSeparator());
         }
-        loadTextScreen(event, text.toString());
+        loadTextScreen(event, text.toString(),headline);
     }
 
     @FXML
     void GiveMeORF(ActionEvent event) throws IOException {
+        String headline ="Die \u00DCberschrift der Webseite lautet: ";
 
-        StringBuilder text = new StringBuilder("Die \u00DCberschrift der Webseite lautet: ");
-        text.append(System.lineSeparator());
+        StringBuilder text = new StringBuilder();
         text.append(System.lineSeparator());
         text.append(WhatHappens.websideName());
 
-        loadTextScreen(event, text.toString());
+        loadTextScreen(event, text.toString(), headline);
     }
 
 
@@ -121,17 +125,17 @@ public class Oberflaeche {
     @FXML
     void GiveMeSubHeadlines(ActionEvent event) throws IOException {
 
-        StringBuilder text = new StringBuilder("Other Headlines");
-        text.append(System.lineSeparator());
-        text.append(System.lineSeparator());
+        String headline ="Other Headlines";
+
+        StringBuilder text = new StringBuilder();
         for (String e : Headlines.otherHeadlines()) {
             text.append(e).append(System.lineSeparator());
         }
-        loadTextScreen(event, text.toString());
+        loadTextScreen(event, text.toString(), headline);
     }
 
 
-    private void loadTextScreen(Event event, String text){
+    private void loadTextScreen(Event event, String text, String headline){
         Node node = (Node) event.getSource();
         Stage stageTheEventSourceNodeBelongs = (Stage) node.getScene().getWindow();
         stageTheEventSourceNodeBelongs.close();
@@ -143,6 +147,7 @@ public class Oberflaeche {
             TextscreenController controller = new TextscreenController();
             // pass the values to controller instance
             controller.setText(text);
+            controller.setHeadline(headline);
 
             // set the controller to fxml
             loader.setController(controller);

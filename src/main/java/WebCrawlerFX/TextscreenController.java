@@ -18,24 +18,34 @@ public class TextscreenController {
     private javafx.scene.control.Button GoBack;
 
     @FXML
-    private javafx.scene.control.TextArea textArea;
+    private javafx.scene.control.Label label2;
 
     @FXML
     private javafx.scene.control.Label label;
 
     public String text = "";
+    public String headline = "";
+
 
     public void setText(String text) {
         this.text = text;
+    }
+    public void setHeadline(String headline) {
+        this.headline= headline;
     }
 
     public String getText() {
         return this.text;
     }
+    public String getHeadline() {
+        return this.headline;
+    }
 
     public void initialize() {
         //textArea.setText(text);
         label.setText(text);
+        label2.setText(headline);
+
 
             GoBack.setOnAction(e -> {
                 Parent tableViewParent = null;
