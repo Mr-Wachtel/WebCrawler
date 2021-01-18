@@ -62,7 +62,7 @@ public class Oberflaeche {
       StringBuilder text = new StringBuilder();
       text.append(System.lineSeparator());
         for (String e : ShitAndGiggels.giveMeBackwards(Headlines.headlines())) {
-            text.append(e).append(System.lineSeparator());
+            text.append(e).append(System.lineSeparator()).append(System.lineSeparator());
         }
        loadTextScreen(event, text.toString(),headline);
 
@@ -76,7 +76,7 @@ public class Oberflaeche {
         StringBuilder text = new StringBuilder();
         text.append(System.lineSeparator());
         for (String e : Headlines.headlines()) {
-            text.append(e).append(System.lineSeparator());
+            text.append(e).append(System.lineSeparator()).append(System.lineSeparator());
         }
         loadTextScreen(event, text.toString(),headline);
     }
@@ -91,7 +91,7 @@ public class Oberflaeche {
         StringBuilder text = new StringBuilder();
         text.append(System.lineSeparator());
         for (String e : WhatHappens.links()) {
-            text.append(e).append(System.lineSeparator());
+            text.append(e).append(System.lineSeparator()).append(System.lineSeparator());
         }
         loadTextScreen(event, text.toString(),headline);
     }
@@ -104,7 +104,7 @@ public class Oberflaeche {
         StringBuilder text = new StringBuilder();
         text.append(System.lineSeparator());
         for (String e : Headlines.headlinesApp()) {
-            text.append(e).append(System.lineSeparator());
+            text.append(e).append(System.lineSeparator()).append(System.lineSeparator());
         }
         loadTextScreen(event, text.toString(),headline);
     }
