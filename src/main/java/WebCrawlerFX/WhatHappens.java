@@ -19,8 +19,10 @@ public class WhatHappens extends WebCrawler {
         Elements links = WebCrawler.getHtml().select("a[href]");
         for (Element e : links) {
             if (!e.toString().contains("#")){
-            linksArrayList.add("link : " + e.attr("href"));
-        }}
+                String g = e.attr("href").toString();
+                if(!g.equals("https://orf.at/")){
+                    linksArrayList.add(g);
+        }}}
         return linksArrayList;
     }
 
