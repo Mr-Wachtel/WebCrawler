@@ -46,6 +46,8 @@ public class Oberflaeche {
         text.append(System.lineSeparator());
         text.append(ShitAndGiggels.mixUpMyCaptions(Headlines.headlines()));
 
+
+
         loadTextScreen(event, text.toString());
     }
 

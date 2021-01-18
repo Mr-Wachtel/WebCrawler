@@ -5,38 +5,22 @@ import java.util.Random;
 
 public class ShitAndGiggels extends WebCrawler {
 
-
     public static String mixUpMyCaptions(ArrayList<String> mixup) {
-
-
+    //Überschriften werden durchgemischt und eine neue Überschrift daraus erstellt
         String[] MixUpArray;
-        String MixUpString;
-        ArrayList<String> MixUpStringArrayList = new ArrayList<>();
         StringBuilder MixUpStringBuilder = new StringBuilder();
 
-
         Random random = new Random();
-
-
 
         for (String beforemix : mixup) {
             MixUpArray = beforemix.split(" ");
             MixUpStringBuilder.append(MixUpArray[random.nextInt(MixUpArray.length)]+" ");
         }
-
-
         return MixUpStringBuilder.toString();
-
-
-        // for (String aftermix : MixUpStringArrayList) {
-        //      System.out.println(aftermix);
-        //    System.out.println();
-
     }
 
-    //for Shit an Giggles
-
     public static ArrayList<String> giveMeBackwards (ArrayList < String > headlines) {
+     //Überschrift wird rückwärts ausgegeben
         String[] backwardsArry;
         String backwardsString;
         ArrayList<String> backwardsStringArrayList = new ArrayList<>();
@@ -54,5 +38,4 @@ public class ShitAndGiggels extends WebCrawler {
         }
         return backwardsStringArrayList;
     }
-
 }

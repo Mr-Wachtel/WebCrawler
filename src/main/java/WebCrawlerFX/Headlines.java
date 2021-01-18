@@ -63,12 +63,10 @@ public class Headlines extends WebCrawler {
 
         public static ArrayList<String> otherHeadlines () throws IOException {
             ArrayList<String> allOtherHeadlines = new ArrayList<>();
-          //  ArrayList<String> thisHeadline = new ArrayList<>();
 
             Elements otherHeadlinesE = WebCrawler.getHtml().select("div.ticker-ressort");
 
             for (Element a : otherHeadlinesE) {
-                //thisHeadline.clear();
                 Elements h2 = a.select("h2");
                 String testH2 = h2.toString();
 
@@ -90,15 +88,10 @@ public class Headlines extends WebCrawler {
                     }
                     if (!testH3.contains("h3")) {
                         allOtherHeadlines.add(testH3);
-                        //thisHeadline.add(testH3);
                     }
-                   // allOtherHeadlines.add(System.lineSeparator());
                 }
                 allOtherHeadlines.add(System.lineSeparator());
-              /*  System.out.println();
-                System.out.println(testH2);
-                for (String d: thisHeadline)
-                System.out.println(d);*/
+
             }
             return allOtherHeadlines;
         }
