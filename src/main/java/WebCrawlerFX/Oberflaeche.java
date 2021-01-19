@@ -178,11 +178,9 @@ public class Oberflaeche {
         String headline ="Sei gegr\u00FC\u00DFt neugieriger Wanderer!";
 
         String Sandra = "Test";
-        String Phil ="";
-        String Mary ="";
-        String Sayena ="";
 
-        loadTextScreen(event,Sandra,Phil,Mary,Sayena; headline);
+
+        loadTextScreen(event,Sandra,headline);
 
     }
 
