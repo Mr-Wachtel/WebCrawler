@@ -8,11 +8,17 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class Oberflaeche {
+
+
+    @FXML
+    private ImageView MightyDucks;
 
     @FXML
     private Button GoBack;
@@ -164,6 +170,20 @@ public class Oberflaeche {
         } catch (IOException e){
             System.out.println("Error loading scene.");
         }
+    }
+
+    @FXML
+    void MightyDucks(MouseEvent event) throws IOException {
+
+        String headline ="Sei gegr\u00FC\u00DFt neugieriger Wanderer!";
+
+        String Sandra = "Test";
+        String Phil ="";
+        String Mary ="";
+        String Sayena ="";
+
+        loadTextScreen(event,Sandra,Phil,Mary,Sayena; headline);
+
     }
 
 
