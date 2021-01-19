@@ -177,10 +177,11 @@ public class Oberflaeche {
 
         String headline ="Sei gegr\u00FC\u00DFt neugieriger Wanderer!";
 
-        String Sandra = "Test";
+        String EasterEgg = "Ein kleiner Gruß von uns :)";
 
 
-        loadTextScreen(event,Sandra,headline);
+
+        loadTextScreen(event,EasterEgg, headline);
 
     }
 
