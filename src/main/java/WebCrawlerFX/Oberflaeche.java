@@ -117,13 +117,13 @@ public class Oberflaeche {
 
     @FXML
     void GiveMeORF(ActionEvent event) throws IOException {
-        String headline ="Die \u00DCberschrift der Webseite lautet: ";
+        String headline ="Der link zur durchsuchten Webseite: ";
 
-        StringBuilder text = new StringBuilder();
-        text.append(System.lineSeparator());
-        text.append(WhatHappens.websideName());
+        String  text = WhatHappens.websideName();
 
-        loadTextScreen(event, text.toString(), headline);
+        Hyperlink.setWeblink(text);
+        loadHyperlinkScreen(event, text, headline);
+
     }
 
 
@@ -183,6 +183,37 @@ public class Oberflaeche {
 
         loadTextScreen(event,EasterEgg, headline);
 
+    }
+
+    private void loadHyperlinkScreen(Event event, String hyperlink, String headline){
+        Node node = (Node) event.getSource();
+        Stage stageTheEventSourceNodeBelongs = (Stage) node.getScene().getWindow();
+        stageTheEventSourceNodeBelongs.close();
+
+        try {
+            // load fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("hyperlink.fxml"));
+            // initialize controller manually to pass values - remove controller from fxml!
+            Hyperlink controller = new Hyperlink();
+            // pass the values to controller instance
+            controller.setHyperlink(hyperlink);
+            controller.setHeadline2(headline);
+
+            // set the controller to fxml
+            loader.setController(controller);
+
+            Parent root = loader.load();
+
+            // call initialize method to set the elements
+            controller.initialize();
+
+            // show scene
+            Scene scene = new Scene(root, 600,400);
+            stageTheEventSourceNodeBelongs.setScene(scene);
+            stageTheEventSourceNodeBelongs.show();
+        } catch (IOException e){
+            System.out.println("Error loading scene.");
+        }
     }
 
 

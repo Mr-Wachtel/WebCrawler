@@ -30,7 +30,7 @@ public class WhatHappens extends WebCrawler {
 
     // Überschrift der durchsuchten Webseite
     public static String websideName() throws IOException {
-        String title = WebCrawler.getHtml().title();
+        String title = "https://"+ WebCrawler.getHtml().title();
         return title;
 
     }
