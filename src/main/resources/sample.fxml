@@ -37,7 +37,7 @@
             <Insets />
          </GridPane.margin>
       </Button>
-      <ImageView fitHeight="134.0" fitWidth="175.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+      <ImageView fitHeight="87.0" fitWidth="134.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <image>
             <Image url="@anaheim-mighty-ducks-2-logo-black-and-white.png" />
          </image>
