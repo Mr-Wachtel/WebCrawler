@@ -1,18 +1,25 @@
 package WebCrawlerFX;
-
+import javafx.geometry.Orientation;
+import javafx.scene.Group;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class Oberflaeche {
 
@@ -92,14 +99,17 @@ public class Oberflaeche {
     @FXML
     void GiveMeLinks(ActionEvent event) throws IOException {
 
-        String headline ="Links";
+      //  Variante für die Ausgabe der Links nur als Text
+
+       /* String headline ="Links";
 
         StringBuilder text = new StringBuilder();
         text.append(System.lineSeparator());
         for (String e : WhatHappens.links()) {
             text.append(e).append(System.lineSeparator()).append(System.lineSeparator());
         }
-        loadTextScreen(event, text.toString(),headline);
+        loadTextScreen(event, text.toString(),headline);*/
+        loadHyperlinksScreen(event);
     }
 
 
@@ -246,8 +256,122 @@ public class Oberflaeche {
         }
     }
 
+    private void loadHyperlinksScreen(Event event) throws IOException {
+        Node node = (Node) event.getSource();
+        Stage stageTheEventSourceNodeBelongs = (Stage) node.getScene().getWindow();
+        stageTheEventSourceNodeBelongs.close();
+
+        try {
+
+            Scene scene = new Scene(new Group());
+
+            start(stageTheEventSourceNodeBelongs, scene);
+
+            stageTheEventSourceNodeBelongs.setScene(scene);
+            stageTheEventSourceNodeBelongs.show();
+        }
+        finally
+        {}
+
+    }
+
+    public void start(Stage stage, Scene scene) throws IOException {
+        //Scene scene = new Scene(new Group());
+        stage.setTitle("Mighty Ducks links: ");
+        stage.setWidth(600);
+        stage.setHeight(600);
 
 
+        // Cheat Code
+        final javafx.scene.control.Hyperlink[] hpls
+                = new javafx.scene.control.Hyperlink[18];
+
+        String[] captions = new String[WhatHappens.links().size()];
+
+        int h = 0;
+        for (String g : WhatHappens.links()) {
+            captions[h] = g;
+            h++;
+        }
+
+        for (int i =0; i< 18; i++) {
+            final javafx.scene.control.Hyperlink hpl = new javafx.scene.control.Hyperlink(captions[i]);
+            hpls[i] = hpl;
+            String hilfe = captions[i];
+            hpl.setOnAction(e -> {
+                if (Desktop.isDesktopSupported()) {
+                    try {
+                        Desktop.getDesktop().browse(new URI(hilfe));
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    } catch (URISyntaxException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            });
+        }
+     /* Code with Scroll Pane
+
+     final javafx.scene.control.Hyperlink[] hpls
+              = new javafx.scene.control.Hyperlink[(WhatHappens.links().size())];
+        int i = 0;
+        for (String g : WhatHappens.links()) {
+            final javafx.scene.control.Hyperlink hpl = new javafx.scene.control.Hyperlink(g);
+            hpls[i] = hpl;
+          //  e = hpl;
+            //hpl.setText("http://"+i);
+            hpl.setOnAction(e -> {
+                if(Desktop.isDesktopSupported())
+                {
+                    try {
+                        Desktop.getDesktop().browse(new URI(g));
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    } catch (URISyntaxException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            });
+            i++;
+
+        }*/
+
+
+
+        final Button GoBack2 = new Button("Nochmal");
+        GoBack2.setAlignment(Pos.BOTTOM_CENTER);
+        //final ScrollBar pane = new ScrollBar();
+        //pane.setOrientation(Orientation.VERTICAL);
+
+        GoBack2.setOnAction(e -> {
+            Parent tableViewParent = null;
+            try {
+                tableViewParent = FXMLLoader.load(getClass().getResource("/sample.fxml"));
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            Scene tableviewScene = new Scene(tableViewParent);
+            //Stage Info
+
+            Stage window = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            window.setScene(tableviewScene);
+            window.show();
+
+        });
+
+
+
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(hpls);
+
+
+        vbox.getChildren().add(GoBack2);
+        vbox.setSpacing(5);
+
+        ((Group)scene.getRoot()).getChildren().add(vbox);
+        stage.setScene(scene);
+        stage.show();
+    }
 
 }
 
