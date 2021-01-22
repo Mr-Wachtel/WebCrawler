@@ -181,7 +181,7 @@ public class Oberflaeche {
 
 
 
-        loadTextScreen(event,EasterEgg, headline);
+        loadEasterEgg(event, headline);
 
     }
 
@@ -198,6 +198,37 @@ public class Oberflaeche {
             // pass the values to controller instance
             controller.setHyperlink(hyperlink);
             controller.setHeadline2(headline);
+
+            // set the controller to fxml
+            loader.setController(controller);
+
+            Parent root = loader.load();
+
+            // call initialize method to set the elements
+            controller.initialize();
+
+            // show scene
+            Scene scene = new Scene(root, 600,400);
+            stageTheEventSourceNodeBelongs.setScene(scene);
+            stageTheEventSourceNodeBelongs.show();
+        } catch (IOException e){
+            System.out.println("Error loading scene.");
+        }
+    }
+
+    private void loadEasterEgg(Event event, String headline){
+        Node node = (Node) event.getSource();
+        Stage stageTheEventSourceNodeBelongs = (Stage) node.getScene().getWindow();
+        stageTheEventSourceNodeBelongs.close();
+
+        try {
+            // load fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("easterEgg.fxml"));
+            // initialize controller manually to pass values - remove controller from fxml!
+            EasterEgg controller = new EasterEgg();
+            // pass the values to controller instance
+            //controller.setText(text);
+            controller.setHeadline(headline);
 
             // set the controller to fxml
             loader.setController(controller);
