@@ -279,12 +279,12 @@ public class Oberflaeche {
         //Scene scene = new Scene(new Group());
         stage.setTitle("Mighty Ducks links: ");
         stage.setWidth(600);
-        stage.setHeight(600);
+        stage.setHeight(400);
 
 
         // Cheat Code
         final javafx.scene.control.Hyperlink[] hpls
-                = new javafx.scene.control.Hyperlink[18];
+                = new javafx.scene.control.Hyperlink[11];
 
         String[] captions = new String[WhatHappens.links().size()];
 
@@ -294,7 +294,7 @@ public class Oberflaeche {
             h++;
         }
 
-        for (int i =0; i< 18; i++) {
+        for (int i =0; i< 11; i++) {
             final javafx.scene.control.Hyperlink hpl = new javafx.scene.control.Hyperlink(captions[i]);
             hpls[i] = hpl;
             String hilfe = captions[i];
